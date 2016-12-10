@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BitCoinDashboard</string>
+    <string name="current_us_price_per_bitcoin">current $US price per bitcoin</string>
+    <string name="chart">price chart</string>
+</resources>
