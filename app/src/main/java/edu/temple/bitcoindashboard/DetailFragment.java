@@ -34,7 +34,7 @@ public class DetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
+        setRetainInstance(true);
         Thread networkThread = new Thread() {
             @Override
             public void run() {
@@ -73,7 +73,7 @@ public class DetailFragment extends Fragment {
 
             usdString = (String) msg.obj;
             USDTextView =  (TextView) getView().findViewById(R.id.usdTextView);
-            USDTextView.setText(usdString);
+            USDTextView.setText(" " + usdString);
 
         }
     };
@@ -87,12 +87,5 @@ public class DetailFragment extends Fragment {
     }
 
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        if (menu != null) {
 
-            menu.findItem(R.id.searchButton).setVisible(false);
-        }
-    }
 }

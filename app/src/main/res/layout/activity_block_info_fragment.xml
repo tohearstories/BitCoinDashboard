@@ -19,7 +19,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Block Number"
+            android:text="@string/enterBlockNumber"
             android:id="@+id/blockNumberEditText"
             android:width="190sp"
             android:textColor="#000000" />
@@ -27,7 +27,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Block Info"
+            android:text="@string/getBlockInfo"
             android:id="@+id/getBlockInfoButton" />
 
     </LinearLayout>
@@ -40,13 +40,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Previous Block"
+            android:text="@string/previousBlock"
             android:id="@+id/previousButton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next Block"
+            android:text="@string/nextBlock"
             android:id="@+id/nextButton" />
 
     </LinearLayout>
@@ -61,7 +61,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="fee: "
+        android:text="@string/fee"
         android:id="@+id/textView"
         android:textSize="25sp"
         android:textColor="#000000" />
@@ -86,7 +86,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="size: "
+            android:text="@string/size"
             android:textSize="25sp"
             android:textColor="#000000"/>
 
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="difficulty: "
+            android:text="@string/difficulty"
             android:textSize="25sp"
             android:textColor="#000000"/>
 
@@ -136,7 +136,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="days destroyed: "
+            android:text="@string/daysDestroyed"
             android:textSize="25sp"
             android:textColor="#000000"/>
 

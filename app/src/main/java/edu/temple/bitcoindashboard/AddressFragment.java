@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -45,6 +47,10 @@ public class AddressFragment extends Fragment {
     String balanceFromAPI;
     ListView listView ;
     ArrayAdapter<String> arrayAdapter;
+    String value;
+
+    String internalFilename = "myfile";
+    File file;
 
 
     public static AddressFragment newInstance() {
@@ -57,8 +63,28 @@ public class AddressFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
            addresses = savedInstanceState.getStringArrayList("arraylistkey");
-
         }
+
+        setRetainInstance(true);
+
+        file = new File( getActivity().getFilesDir(), internalFilename);
+
+
+        if (file.exists()) {
+            addresses = new ArrayList<String>();
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    addresses.add(line.toString());
+                }
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
 
@@ -102,7 +128,6 @@ public class AddressFragment extends Fragment {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        //addresses.add(addressToCheck);
                     }
                 };
                 networkThread.start();
@@ -120,6 +145,74 @@ public class AddressFragment extends Fragment {
             arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, addresses );
         }
         listView.setAdapter(arrayAdapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                    long arg3)
+            {
+                value = (String)adapter.getItemAtPosition(position);
+
+
+                Thread networkThread = new Thread() {
+                    @Override
+                    public void run() {
+                        try {;
+                          //  addressToCheck = ((EditText) getView().findViewById(R.id.editText)).getText().toString();
+                            String urlString = urlRootString + value;
+                            URL url = new URL(urlString);
+
+                            BufferedReader reader = new BufferedReader(  new InputStreamReader(  url.openStream()));
+
+                            String jsonString = reader.readLine();
+
+                            JSONObject root = new JSONObject(jsonString);
+                            Message msg = Message.obtain();
+                            msg.obj = root;
+                            messageHandler.sendMessage(msg);
+
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                networkThread.start();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         return v;
 
@@ -149,7 +242,25 @@ public class AddressFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             String temp = (String) msg.obj;
-            addresses.add(temp);
+
+            try {
+                FileWriter writer = new FileWriter(file);
+
+                for (int i=0; i < addresses.size(); i++){
+                    writer.append( addresses.get(i)  );
+                    writer.append('\n');
+                }
+
+                writer.append(temp);
+
+                writer.close();
+
+                addresses.add(temp);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
     };
 
@@ -165,14 +276,5 @@ public class AddressFragment extends Fragment {
         super.onSaveInstanceState(outState);
 
     }
-
-
-    public void actionBarSearch(){
-        System.out.println("do stuff");
-    }
-
-
-
-
 
 }

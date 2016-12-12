@@ -14,7 +14,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/current_us_price_per_bitcoin"
+        android:text="@string/currentUSPer"
         android:id="@+id/priceButton"
         android:layout_centerHorizontal="true" />
 
@@ -29,7 +29,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Block Info"
+        android:text="@string/viewBlockInfo"
         android:id="@+id/blockInfoButton"
         android:layout_below="@+id/chartButton"
         android:layout_alignStart="@+id/chartButton" />
@@ -37,7 +37,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Current Balance"
+        android:text="@string/getCurrentBalance"
         android:id="@+id/balanceButton"
         android:layout_below="@+id/blockInfoButton"
         android:layout_alignStart="@+id/priceButton" />

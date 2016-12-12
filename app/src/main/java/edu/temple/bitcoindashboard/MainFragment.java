@@ -22,7 +22,7 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-
+        setRetainInstance(true);
     }
 
     @Override
@@ -66,14 +66,7 @@ public class MainFragment extends Fragment {
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        if (menu != null) {
 
-            menu.findItem(R.id.searchButton).setVisible(false);
-        }
-    }
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(int button);

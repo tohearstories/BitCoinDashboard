@@ -32,13 +32,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1 day"
+            android:text="@string/oneDay"
             android:id="@+id/oneDayButton" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 day"
+            android:text="@string/fiveDay"
             android:id="@+id/fiveDayButton" />
 
 

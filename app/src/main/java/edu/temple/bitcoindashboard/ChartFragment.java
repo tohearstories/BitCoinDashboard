@@ -46,7 +46,7 @@ public class ChartFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
+        setRetainInstance(true);
     }
 
 
@@ -97,12 +97,5 @@ public class ChartFragment extends Fragment {
     };
 
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        if (menu != null) {
 
-            menu.findItem(R.id.searchButton).setVisible(false);
-        }
-    }
 }

@@ -44,6 +44,7 @@ public class BlockInfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        setRetainInstance(true);
     }
 
 
@@ -196,20 +197,13 @@ public class BlockInfoFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            ((TextView)getView().findViewById(R.id.feeTextView)).setText(feeString);
-            ((TextView)getView().findViewById(R.id.sizeTextView)).setText(sizeString);
-            ((TextView)getView().findViewById(R.id.difficultyTextView)).setText(difficultyString);
-            ((TextView)getView().findViewById(R.id.daysDestroyedTextView)).setText(daysDestroyedString);
+            ((TextView)getView().findViewById(R.id.feeTextView)).setText(" " + feeString);
+            ((TextView)getView().findViewById(R.id.sizeTextView)).setText(" " + sizeString);
+            ((TextView)getView().findViewById(R.id.difficultyTextView)).setText(" " + difficultyString);
+            ((TextView)getView().findViewById(R.id.daysDestroyedTextView)).setText(" " + daysDestroyedString);
         }
     };
 
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        if (menu != null) {
 
-            menu.findItem(R.id.searchButton).setVisible(false);
-        }
-    }
 }

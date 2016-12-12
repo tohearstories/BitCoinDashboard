@@ -1,5 +1,34 @@
 <resources>
+
     <string name="app_name">BitCoinDashboard</string>
-    <string name="current_us_price_per_bitcoin">current $US price per bitcoin</string>
+
+    <string name="bitcoinAddress">Enter Bitcoin Address</string>
+    <string name="getBalance">Get Balance</string>
+    <string name="balance">Balance: </string>
+    <string name="mostRecentlyViewed">Most Recently Viewed</string>
+    <string name="enterBlockNumber">Enter Block Number</string>
+    <string name="getBlockInfo">Get Block Info</string>
+    <string name="previousBlock">Previous Block</string>
+    <string name="nextBlock">Next Block</string>
+    <string name="fee">fee: </string>
+    <string name="size">size: </string>
+    <string name="difficulty">difficulty: </string>
+    <string name="daysDestroyed">days destroyed: </string>
+    <string name="oneDay">1 day</string>
+    <string name="fiveDay">5 day</string>
+    <string name="currentUSPer">current $US price per bitcoin  </string>
+    <string name="usper">each bitcoin is US$: </string>
     <string name="chart">price chart</string>
+    <string name="viewBlockInfo">View Block Info</string>
+    <string name="getCurrentBalance">Get Current Balance</string>
+
+
+
+
+
+
+
+
+
+
 </resources>

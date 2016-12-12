@@ -3,10 +3,12 @@ package edu.temple.bitcoindashboard;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener {
 
@@ -28,8 +30,21 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         fragmentTransaction.add(R.id.main, new MainFragment());
         fragmentTransaction.commit();
 
+        /*
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main, new DetailFragment());
+        //fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+*/
 
         if(twoPanes) {
+            fragmentManager = getFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.main, new MainFragment());
+            fragmentTransaction.commit();
+
+
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.detail, new DetailFragment());
             fragmentTransaction.commit();
@@ -107,29 +122,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
 
 
-    }
-
-
-    //what follows is necessary overhead to create the search link on the appbar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    //this basically sets the onClick behavior for the search link on the appbar
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == R.id.searchButton){
-            searchButtonClicked();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void searchButtonClicked(){
-        addressFragment.actionBarSearch();
     }
 
 

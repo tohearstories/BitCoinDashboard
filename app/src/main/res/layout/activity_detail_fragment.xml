@@ -16,7 +16,7 @@
         android:id="@+id/labelTextView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:text="Current $US Per Bitcoin:  "
+        android:text="@string/usper"
         android:textSize="23sp"
         android:textColor="#000000"
         />
