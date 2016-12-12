@@ -34,7 +34,28 @@ public class DetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        setRetainInstance(true);
+
+}
+    Handler messageHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            usdString = (String) msg.obj;
+
+            USDTextView.setText(" " + usdString);
+
+        }
+    };
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.activity_detail_fragment, container, false);
+
+        USDTextView = (TextView) v.findViewById(R.id.usdTextView);
+
+
         Thread networkThread = new Thread() {
             @Override
             public void run() {
@@ -65,23 +86,8 @@ public class DetailFragment extends Fragment {
             }
         };
         networkThread.start();
-}
-    Handler messageHandler = new Handler() {
 
-        @Override
-        public void handleMessage(Message msg) {
 
-            usdString = (String) msg.obj;
-            USDTextView =  (TextView) getView().findViewById(R.id.usdTextView);
-            USDTextView.setText(" " + usdString);
-
-        }
-    };
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View v = inflater.inflate(R.layout.activity_detail_fragment, container, false);
         return v;
 
     }

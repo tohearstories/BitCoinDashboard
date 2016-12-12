@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
         twoPanes = (findViewById(R.id.detail) != null);
 
-        fragmentManager = getFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.main, new MainFragment());
-        fragmentTransaction.commit();
+            fragmentManager = getFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.main, new MainFragment());
+            fragmentTransaction.commit();
 
         /*
         fragmentTransaction = fragmentManager.beginTransaction();
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
 
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.detail, new DetailFragment());
+            fragmentTransaction.replace(R.id.detail, new DetailFragment());
             fragmentTransaction.commit();
         }
 
@@ -123,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
 
 
     }
+
+
+
 
 
 }

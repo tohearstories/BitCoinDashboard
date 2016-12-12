@@ -22,7 +22,7 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-        setRetainInstance(true);
+       // setRetainInstance(true);
     }
 
     @Override

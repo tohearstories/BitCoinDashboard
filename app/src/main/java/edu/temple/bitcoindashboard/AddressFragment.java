@@ -40,7 +40,7 @@ import java.util.ArrayList;
 @TargetApi(Build.VERSION_CODES.M)
 public class AddressFragment extends Fragment {
 
-    ArrayList<String> addresses;// = new ArrayList<String>();
+    ArrayList<String> addresses;
     TextView balanceTextView;
     String addressToCheck;
     String urlRootString = "http://btc.blockr.io/api/v1/address/info/";
@@ -64,8 +64,6 @@ public class AddressFragment extends Fragment {
         if (savedInstanceState != null) {
            addresses = savedInstanceState.getStringArrayList("arraylistkey");
         }
-
-        setRetainInstance(true);
 
         file = new File( getActivity().getFilesDir(), internalFilename);
 
@@ -160,7 +158,6 @@ public class AddressFragment extends Fragment {
                     @Override
                     public void run() {
                         try {;
-                          //  addressToCheck = ((EditText) getView().findViewById(R.id.editText)).getText().toString();
                             String urlString = urlRootString + value;
                             URL url = new URL(urlString);
 
@@ -184,35 +181,8 @@ public class AddressFragment extends Fragment {
                 };
                 networkThread.start();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         return v;
 
